@@ -2,7 +2,6 @@ package com.csv.D34_JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -14,10 +13,13 @@ public class JDBCEmpPayroll {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employee_payroll_service",
 					"root", "9952625052");
 			Statement statement = connection.createStatement();
-			statement.execute(
-					"insert into employee_payroll (name, Department, gender, Basic_Pay, deduction, taxable_pay, tax, net_pay, start) values ('Shek', 'Sales', 'M', 50000, 8000, 60000, 545000, 345600, '2022-08-18');");
-			ResultSet result = statement.executeQuery("select * from employee_payroll;");
-		}catch (SQLException e) {
+			
+			int updatedRow = statement.executeUpdate("update employee_payroll set Basic_pay = 3000000.00 WHERE name = 'Terisa';");
+			
+			System.out.println("Changed Rows :=" + updatedRow);
+		}
+		catch (SQLException e) {
+			
 			System.out.println("****UNABLE TO CONNECT TO DATABASE****");
 		}
 		finally {
