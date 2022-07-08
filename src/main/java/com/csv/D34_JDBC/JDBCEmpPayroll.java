@@ -2,6 +2,7 @@ package com.csv.D34_JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -14,7 +15,8 @@ public class JDBCEmpPayroll {
 					"root", "9952625052");
 			Statement statement = connection.createStatement();
 			statement.execute(
-					"insert into employee_payroll (name, Department, gender, Basic_Pay, deduction, taxable_pay, tax, net_pay, start) values ('Kumar', 'Marketing', 'M', 80000, 9000, 30000, 317000, 245600, '2022-07-10');");
+					"insert into employee_payroll (name, Department, gender, Basic_Pay, deduction, taxable_pay, tax, net_pay, start) values ('Shek', 'Sales', 'M', 50000, 8000, 60000, 545000, 345600, '2022-08-18');");
+			ResultSet result = statement.executeQuery("select * from employee_payroll;");
 		}catch (SQLException e) {
 			System.out.println("****UNABLE TO CONNECT TO DATABASE****");
 		}
